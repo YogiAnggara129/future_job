@@ -15,18 +15,18 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
 
-    Timer(Duration(seconds: 3), () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: GetStartedPage()))
+    Timer(const Duration(seconds: 3), () {
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const GetStartedPage()));
     });
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff4242A4),
+      backgroundColor: const Color(0xff4242A4),
       body: Center(
         child: Image.asset(
           'assets/image_splash.png',
-          width: 60,
+          width: MediaQuery.of(context).size.width * 0.30,
         ),
       ),
     );

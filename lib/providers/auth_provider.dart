@@ -24,7 +24,7 @@ class AuthProvider with ChangeNotifier {
         return null;
       }
     } catch(e) {
-
+      return null;
     }
   }
 }
