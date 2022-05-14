@@ -1,12 +1,20 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:future_job/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
 
+  @override
+  State<SignInPage> createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
+  bool isEmailValid = true;
+  TextEditingController emailController = TextEditingController(text: '');
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -48,6 +56,9 @@ class SignInPage extends StatelessWidget {
                 height: 8,
               ),
               TextFormField(
+                controller: emailController,
+                onChanged: (text) => (setState(
+                    () => isEmailValid = EmailValidator.validate(text))),
                 decoration: InputDecoration(
                   fillColor: Color(0xffF1F0F5),
                   filled: true,
@@ -57,9 +68,17 @@ class SignInPage extends StatelessWidget {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(100),
-                    borderSide: BorderSide.none,
+                    borderSide: BorderSide(
+                        color: isEmailValid
+                            ? Color(0xff4141A4)
+                            : Color(0xffFD4F56)),
                   ),
+                  hintText: '',
                 ),
+                style: TextStyle(
+                    color: isEmailValid 
+                    ? Color(0xff4141A4) 
+                    : Color(0xffFD4F56)),
               ),
               SizedBox(
                 height: 20,
@@ -72,6 +91,7 @@ class SignInPage extends StatelessWidget {
                 height: 8,
               ),
               TextFormField(
+                obscureText: true,
                 decoration: InputDecoration(
                   fillColor: Color(0xffF1F0F5),
                   filled: true,
