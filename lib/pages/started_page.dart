@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:future_job/pages/signin_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class GetStartedPage extends StatelessWidget {
@@ -83,7 +84,12 @@ class GetStartedPage extends StatelessWidget {
                     width: 200,
                     height: 45,
                     child: OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context, 
+                          MaterialPageRoute(builder: (context) => SignInPage())
+                        );
+                      },
                       style: OutlinedButton.styleFrom(
                           side: const BorderSide(color: Colors.white),
                           shape: RoundedRectangleBorder(
