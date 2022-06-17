@@ -1,7 +1,6 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:future_job/pages/home_page.dart';
 import 'package:future_job/pages/signin_page.dart';
 import 'package:future_job/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,7 +19,6 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
-    
     Widget profileImageWidget() {
       return Center(
         child: InkWell(
@@ -32,7 +30,9 @@ class _SignUpPageState extends State<SignUpPage> {
           child: Column(
             children: [
               Image.asset(
-                isImageUploaded ? 'assets/image_profile.png' : 'assets/icon_upload.png',
+                isImageUploaded
+                    ? 'assets/image_profile.png'
+                    : 'assets/icon_upload.png',
                 width: 120,
                 height: 120,
               ),
@@ -179,7 +179,10 @@ class _SignUpPageState extends State<SignUpPage> {
                     backgroundColor: Color(0xff4141A4),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(66))),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomePage()));
+                },
                 child: Text(
                   'Sign Up',
                   style: buttonTextStyle,
